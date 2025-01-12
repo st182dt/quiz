@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+        .question {
+            margin-bottom: 10px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+        .counter {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #555;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+        .option button {
+            margin-right: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            color: #000;
+            border-radius: 5px;
+        }
+        .option button.selected {
+            background-color: #d1e7fd;
+        }
+        .verify {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .verify:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .result {
+            position: absolute;
+            border-radius: 5px;
+            padding: 10px 20px;
+            top: 20px;
+            font-size: 1.5em;
+            color: #fff;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .result.show {
+            opacity: 1;
+            transform: translateY(20px);
+        }
+    </style>
+</head>
+<body>
+    <div class="question">Loading question...</div>
+    <div class="counter">Question 1 / 3</div>
+    <div class="options"></div>
+    <button class="verify" disabled>Overiť</button>
+    <div class="result"></div>
+
+    <script>
+        const questions = [
+            {
+                text: "Systém sociálnych prvkov, vzťahov a cieľov v inštitucionálnej podobe definuje organizáciu:",
+                options: {
+                    a: "Vo vecnom význame",
+                    b: "V aktívnom význame",
+                    c: "Vo význame atribútu objektu",
+                    d: "Vo význame vnútorného usporiadania objektu"
+                },
+                correctAnswers: ["a"]
+            },
+            {
+                text: "Interdisciplinárny charakter manažmentu je charakteristický pre:",
+                options: {
+                    a: "Tradičnú školu manažmentu",
+                    b: "Behaviorálnu teóriu manažmentu",
+                    c: "Modernou teóriou manažmentu",
+                    d: "Byrokratickú teóriu organizácie"
+                },
+                correctAnswers: ["c"]
+            },
+            {
+                text: "Proces zabezpečujúci jednotné úsilie všetkých podsystémov organizácie pri plnení celkovej úlohy organizácie predstavuje:",
+                options: {
+                    a: "Organizovanie ako proces",
+                    b: "Organizačnú diferenciáciu",
+                    c: "Organizačnú integráciu",
+                    d: "Organizačnou konfiguráciu"
+                },
+                correctAnswers: ["c"]
+            },
+            {
+                text: "Z hľadiska departmentizácie rozlišujeme nasledovné typy organizačných štruktúr:",
+                options: {
+                    a: "Vysoká vs. plochá organizačná štruktúra",
+                    b: "Úzka vs. široká organizačná štruktúra",
+                    c: "Líniová vs. funkčná organizačná štruktúra",
+                    d: "Funkcionálna vs. divizionálna organizačná štruktúra"
+                },
+                correctAnswers: ["d"]
+            },
+            {
+                text: "Vytvorenie objektovo špecializovaných, relatívne uzavretých organizačných celkov, ktoré zabezpečujú aj riadiacej činnosti, je typické pre model organizačnej štruktúry:",
+                options: {
+                    a: "Funkcionálny",
+                    b: "Funkčný",
+                    c: "Divizionálny",
+                    d: "Líniovo-štábny"
+                },
+                correctAnswers: ["c"]
+            },
+            {
+                text: "Diferenciácia odbornej funkcie riadenia, pomalší proces rozhodovania a podriadenosť viacerých nadriadeným sú znakmi pre organizačnú štruktúru:",
+                options: {
+                    a: "Vysokú",
+                    b: "Funkčnú ",
+                    c: "Líniovo-štábnu",
+                    d: "decentralizovanú"
+                },
+                correctAnswers: ["b"]
+            },
+            {
+                text: "Model organizačnej štruktúry, ktorý zahŕňa líniové, štábne a projektové útvary, ktorým zodpovedajú samostatné štruktúry prepojené sieťou vertikálnych, horizontálnych a diagonálnych vzťahov je:",
+                options: {
+                    a: "Líniovo-štábna OŠ",
+                    b: "Projektová koordinácia",
+                    c: "Bunková OŠ",
+                    d: "Maticová OŠ"
+                },
+                correctAnswers: ["d"]
+            },
+            {
+                text: "Štruktúra, pri ktorej sa pri tvorbe útvarov nezohľadňuje výrobok (služba) ako celok ale len časť reťazca je:",
+                options: {
+                    a: "Bunková",
+                    b: "Procesná",
+                    c: "Sieťová",
+                    d: "Cieľovo-programová"
+                },
+                correctAnswers: ["b"]
+            },
+            {
+                text: "Medzi kritériá využívané v rámci modelu EFQM nepatrí:",
+                options: {
+                    a: "Vodcovstvo",
+                    b: "Ľudia",
+                    c: "Kvalita",
+                    d: "Procesy"
+                },
+                correctAnswers: ["c"]
+            },
+            {
+                text: "Orientácia na racionálnu prípravu a racionálne vykonávanie výrobných procesov na najnižších úrovniach organizácie je charakteristické pre:",
+                options: {
+                    a: "Vedecké riadenie Taylorizmus",
+                    b: "Procesný prístup",
+                    c: "Byrokratický prístup",
+                    d: "Rozhodovací prístup"
+                },
+                correctAnswers: ["a"]
+            },
+            {
+                text: "Rozdelenie celkovej činnosti organizácie na jednotlivé útvary sa označuje ako:",
+                options: {
+                    a: "Organizačná diferenciácia",
+                    b: "Organizačná integrácia",
+                    c: "Organizačná decentralizácia",
+                    d: "Formalizácia organizačnej štruktúry"
+                },
+                correctAnswers: ["a"]
+            },
+            {
+                text: "Malý počet stupňov riadenia je charakteristický pre:",
+                options: {
+                    a: "Vysokú organizačnú štruktúru",
+                    b: "Plochú (širokú) organizačnú štruktúru",
+                    c: "Úzku organizačnú štruktúru",
+                    d: "Decentralizovanú organizačnú štruktúru"
+                },
+                correctAnswers: ["b"]
+            },
+            {
+                text: "Určenie maximálneho prístupného počtu podriadených jednému vedúcemu je typické pre:",
+                options: {
+                    a: "Analytický prístup k určeniu rozpätia riadenia",
+                    b: "Systémový prístup k určeniu rozpätia riadenia",
+                    c: "Empirický prístup k určeniu rozpätia riadenia",
+                    d: "Procesný prístup k určeniu rozpätia riadenia"
+                },
+                correctAnswers: ["c"]
+            },
+            {
+                text: "Model organizačnej štruktúry vychádzajúci hlavných činností, na základe ktorých sa tvoria jednotlivé útvary, je:",
+                options: {
+                    a: "Funkcionálny model",
+                    b: "Divizionálny model",
+                    c: "Funkčný model",
+                    d: "Líniový model"
+                },
+                correctAnswers: ["a"]
+            },
+            {
+                text: "Organizačná štruktúra, ktorej nevýhodami sú najmä preťaženie manažérov, nedostatok špecializácie, absencia odborníkov, špecialistov, sa označuje ako:",
+                options: {
+                    a: "Vysoká",
+                    b: "Funkcionálna",
+                    c: "Líniová",
+                    d: "Líniovo štábna"
+                },
+                correctAnswers: ["c"]
+            },
+            {
+                text: "Medzi výhody (znaky) decentralizovaného modelu organizačnej štruktúry nepatrí:",
+                options: {
+                    a: "Odbremenenie vrcholového manažmentu od operatívnych úloh",
+                    b: "Úspora času",
+                    c: "Prenos zodpovednosti na nižšie úrovne riadenia",
+                    d: "Jednotnosť riadenia a kontroly zo strany jedného vedúceho"
+                },
+                correctAnswers: ["d"]
+            },
+            {
+                text: "Medzi cieľovo programové organizačné štruktúry nepatrí:",
+                options: {
+                    a: "Projektová organizácia",
+                    b: "Projektová koordinácia",
+                    c: "Virtuálna organizačná štruktúra",
+                    d: "Maticová organizačná štruktúra"
+                },
+                correctAnswers: ["c"]
+            },
+            {
+                text: "Za najdôležitejší druh organizačných noriem sa považujú:",
+                options: {
+                    a: "Štatúty, stanovy",
+                    b: "Organizačné poriadky",
+                    c: "Smernice",
+                    d: "Postupy"
+                },
+                correctAnswers: ["a"]
+            },
+            {
+                text: "Pre ktorú školu manažmentu je charakteristický prístup, ktorý viedol k definovaniu hlavných manažérskych funkcií čiarkach ktoré tvoria obsah manažmentu:",
+                options: {
+                    a: "Taylorizmus",
+                    b: "Procesný prístup (H. Fayol)",
+                    c: "Byrokratický prístup",
+                    d: "Behaviorálny prístup"
+                },
+                correctAnswers: ["b"]
+            },
+            {
+                text: "Medzi formy pretvárania už existujúcej organizácie patrí:",
+                options: {
+                    a: "Identifikácia činností nevyhnutných pre realizáciu plánov organizácie - diferenciácia úloh",
+                    b: "Definovanie kritérií pre zlúčenie príbuzných činností do príslušných útvarov - integrácia úloh",
+                    c: "Určenie postavenia, zodpovednosti a kompetencie riadiacich orgánov",
+                    d: "Znižovanie počtu výkonných alebo administratívno-správnych útvarov"
+                },
+                correctAnswers: ["d"]
+            },
+            {
+                text: "Vertikálna diferenciácia je:",
+                options: {
+                    a: "Deľba práce, na základe ktorej sa vytvára hierarchia organizačnej štruktúry",
+                    b: "Deľba práce, na základe ktorej sa stanovuje rozpätie riadenia",
+                    c: "Deľba práce, na základe ktorej sa stanovuje počet podriadených pracovníkov jednému vedúcemu",
+                    d: "Proces zabezpečujúci jednotné úsilie všetkých podsystémov organizácie pri plnení celkovej úlohy"
+                },
+                correctAnswers: ["a"]
+            },
+            {
+                text: "Relatívne veľký počet stupňov riadenia a malý počet útvarov (pracovísk) a pracovníkov podriadených vedúcim na jednotlivých stupňoch riadenia je znakom organizačnej štruktúry:",
+                options: {
+                    a: "Plochej",
+                    b: "Divizionálnej",
+                    c: "Vysokej",
+                    d: "Funkcionálnej"
+                },
+                correctAnswers: ["c"]
+            },
+            {
+                text: "Charakteristikou funkčnej organizačnej štruktúry je:",
+                options: {
+                    a: "Každý podriadený má len jedného nadriadeného",
+                    b: "Centralizácia",
+                    c: "Preťažená z vrcholového manažmentu",
+                    d: "Každý podriadený má niekoľko nadriadených"
+                },
+                correctAnswers: ["d"]
+            },
+            {
+                text: "Adaptabilno-organizačný typ je charakteristicky:",
+                options: {
+                    a: "Vysokou mierou formalizácie",
+                    b: "Jednoznačne určenou hierarchiou právomocí",
+                    c: "Nízkou mierou formalizácie",
+                    d: "Využívaním najmä v štátnych inštitúciách"
+                },
+                correctAnswers: ["c"]
+            },
+            {
+                text: "Medzi cieľovo-programové organizačné štruktúry nepatrí:",
+                options: {
+                    a: "Projektová koordinácia",
+                    b: "Sieťová organizácia",
+                    c: "Projektová organizačná štruktúra",
+                    d: "Maticová OŠ"
+                },
+                correctAnswers: ["b"]
+            },
+            {
+                text: "Špecifický typ organizačnej štruktúry, pri ktorom dochádza k prepojeniu veľkého a malého podniku za účelom získania vzájomnej prospešných výhod sa nazýva ako:",
+                options: {
+                    a: "Bunková",
+                    b: "Procesná",
+                    c: "Sieťová",
+                    d: "Cieľovo-programová"
+                },
+                correctAnswers: ["a"]
+            },
+            {
+                text: "Príkazy ako typ organizačného dokumentu sú charakteristické nasledovným:",
+                options: {
+                    a: "Predstavujú základný interný riadiaci akt",
+                    b: "Udeľujú sa z úrovne najvyššieho pracovníka organizácia a vzťahujú sa na všetkých jej zamestnancov",
+                    c: "Predstavujú pokyny z úrovne riadiacich pracovníkov adresované svojim priamym podriadeným",
+                    d: "Majú dlhodobú platnosť"
+                },
+                correctAnswers: ["b"]
+            },
+            {
+                text: "Otázka formálnej a neformálnej organizácie je typická pre:",
+                options: {
+                    a: "Tradičnú (klasickú) školu",
+                    b: "Behaviorálnu (neoklasickú) školu",
+                    c: "Modernú školu",
+                    d: "Pragmatický prístup"
+                },
+                correctAnswers: ["b"]
+            },
+            {
+                text: "Proces zabezpečujúci jednotné úsilie všetkých podsystémov organizácie pri plnení jej celkovej úlohy je:",
+                options: {
+                    a: "Organizačná diferenciácia",
+                    b: "Vertikálna diferenciácia",
+                    c: "Horizontálna diferenciácia",
+                    d: "Organizačná integrácia"
+                },
+                correctAnswers: ["d"]
+            },
+            {
+                text: "Počet pracovníkov (organizačných jednotiek) priradených 1 vedúcemu predstavuje",
+                options: {
+                    a: "Základný stupeň organizačnej štruktúry",
+                    b: "Medzistupeň organizačnej štruktúry",
+                    c: "Rozpätie riadenia",
+                    d: "Konfiguráciu organizačnej štruktúry"
+                },
+                correctAnswers: ["c"]
+            },
+            {
+                text: "Rozdelenia organizácie na útvary, v ktorých sa zoskupujú rovnaké alebo príbuzné funkcie (činnosti) je znakom:",
+                options: {
+                    a: "Širokej OŠ",
+                    b: "Funkcionálnej OŠ",
+                    c: "Divizionálnej OŠ",
+                    d: "Líniovo-štábnej OŠ"
+                },
+                correctAnswers: ["b"]
+            },
+            {
+                text: "Charakteristikou funkčnej organizačnej štruktúry je:",
+                options: {
+                    a: "Každý podriadený má len jedného manažéra",
+                    b: "Centralizácia",
+                    c: "Preťaženosť vrcholového manažmentu",
+                    d: "Každý podriadený má niekoľko manažérov"
+                },
+                correctAnswers: ["d"]
+            },
+            {
+                text: "Nevýhodou funkcionálnej organizačnej štruktúry je:",
+                options: {
+                    a: "Vyššie nároky na líniových vedúcich (manažérov) organizačných jednotiek",
+                    b: "Riziko vzniku duplicít pri riadiacich činnostiach organizačných jednotiek",
+                    c: "Chýbajúci vedúci s komplexnými riadiacimi schopnosťami",
+                    d: "Vyššie náklady na riadiaci aparát"
+                },
+                correctAnswers: ["c"]
+            },
+            {
+                text: "Dôraz na lokálne trhy a lepšia komunikácia s lokálnymi zamestnancami sú znakmi:",
+                options: {
+                    a: "Líniovo-štábnej OŠ",
+                    b: "Maticovej OŠ",
+                    c: "Produktovej divizionálnej OŠ",
+                    d: "Teritoriálnej (územnej) divizionálnej OŠ"
+                },
+                correctAnswers: ["d"]
+            },
+            {
+                text: "Špecializácia a odbornosť v riadení, využívanie odborníkov ako poradný orgán, odbremenenie líniových vedúcich a jednota riadenia organizácie a organizačných jednotiek sú znakmi:",
+                options: {
+                    a: "Funkcionálnej OŠ",
+                    b: "Funkčnej OŠ",
+                    c: "Líniovej OŠ",
+                    d: "Líniovo štábnej OŠ"
+                },
+                correctAnswers: ["d"]
+            },
+            {
+                text: "Nestála, voľne viazaná organizačná sieťová štruktúra založenú na samostatnosti jednotiek, na aktivitách a podnikateľskej pružnosti zamestnancov, pre ktorú je typický vznik a zánik nových útvarov, sa označuje ako:",
+                options: {
+                    a: "Sieťová",
+                    b: "Satelitná",
+                    c: "Virtuálna",
+                    d: "AMÉBA"
+                },
+                correctAnswers: ["d"]
+            }
+        ];
+
+        const correctSound = new Audio("correct.mp3");
+        const incorrectSound = new Audio("incorrect.mp3");
+
+        function shuffleArray(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        let shuffledQuestions = shuffleArray([...questions]);
+        let currentQuestionIndex = 0;
+        let isInteractionLocked = false;
+
+        const questionElement = document.querySelector(".question");
+        const counterElement = document.querySelector(".counter");
+        const optionsElement = document.querySelector(".options");
+        const verifyButton = document.querySelector(".verify");
+        const resultElement = document.querySelector(".result");
+
+        let selectedAnswers = new Set();
+
+        function updateCounter() {
+            counterElement.textContent = `Otázka ${currentQuestionIndex + 1} / ${questions.length}`;
+        }
+
+        function lockInteraction() {
+            isInteractionLocked = true;
+        }
+
+        function unlockInteraction() {
+            isInteractionLocked = false;
+        }
+
+        function loadQuestion() {
+            verifyButton.disabled = true; // Disable button initially
+            const question = shuffledQuestions[currentQuestionIndex];
+            questionElement.textContent = question.text;
+            updateCounter();
+
+            optionsElement.innerHTML = "";
+            selectedAnswers.clear();
+
+            Object.entries(question.options).forEach(([key, value]) => {
+                const optionDiv = document.createElement("div");
+                optionDiv.className = "option";
+
+                const button = document.createElement("button");
+                button.textContent = key.toUpperCase();
+                button.dataset.option = key;
+                button.addEventListener("click", () => {
+                    if (isInteractionLocked) return;
+
+                    if (selectedAnswers.has(key)) {
+                        selectedAnswers.delete(key);
+                        button.classList.remove("selected");
+                    } else {
+                        selectedAnswers.add(key);
+                        button.classList.add("selected");
+                    }
+
+                    verifyButton.disabled = selectedAnswers.size === 0;
+                });
+
+                const label = document.createElement("span");
+                label.textContent = value;
+
+                optionDiv.appendChild(button);
+                optionDiv.appendChild(label);
+                optionsElement.appendChild(optionDiv);
+            });
+        }
+
+        function showResult(message, isCorrect) {
+            resultElement.textContent = message;
+            resultElement.style.backgroundColor = isCorrect ? "#18bd18" : "#f52549";
+            resultElement.classList.add("show");
+
+            setTimeout(() => {
+                resultElement.classList.remove("show");
+            }, 2000);
+        }
+
+        function verifyAnswer() {
+            lockInteraction();
+            verifyButton.disabled = true; // Disable button after clicking
+
+            const question = shuffledQuestions[currentQuestionIndex];
+            const buttons = optionsElement.querySelectorAll("button");
+            const isCorrect = Array.from(selectedAnswers).every(answer => question.correctAnswers.includes(answer)) && selectedAnswers.size === question.correctAnswers.length;
+
+            buttons.forEach(button => {
+                const option = button.dataset.option;
+                if (question.correctAnswers.includes(option)) {
+                    button.style.backgroundColor = "#18bd18";
+                    button.style.color = "#fff";
+                } else {
+                    button.style.backgroundColor = "#f52549";
+                    button.style.color = "#fff";
+                }
+            });
+
+            if (isCorrect) {
+                correctSound.play();
+                showResult("Správne!", true);
+                setTimeout(() => {
+                    goToNextQuestion();
+                }, 2000);
+            } else if (verifyButton.textContent == "Ďalej") {
+                verifyButton.textContent = "Overiť";
+            } else {
+                incorrectSound.play();
+                showResult("Nesprávne!", false);
+                if ("vibrate" in navigator) {
+                    navigator.vibrate(500);
+                }
+                verifyButton.textContent = "Ďalej";
+                setTimeout(() => {
+                    verifyButton.disabled = false;
+                }, 2000);
+                verifyButton.addEventListener("click", goToNextQuestion, { once: true });
+            }
+        }
+
+        function goToNextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex >= shuffledQuestions.length) {
+                shuffledQuestions = shuffleArray([...questions]);
+                currentQuestionIndex = 0;
+            }
+            unlockInteraction();
+            loadQuestion();
+        }
+
+        verifyButton.addEventListener("click", verifyAnswer);
+
+        loadQuestion();
+    </script>
+</body>
+</html>
