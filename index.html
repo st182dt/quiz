@@ -90,369 +90,255 @@
     <script>
         const questions = [
             {
-                text: "Systém sociálnych prvkov, vzťahov a cieľov v inštitucionálnej podobe definuje organizáciu:",
+                text: "Ekonomický normál 1 má tvar:",
                 options: {
-                    a: "Vo vecnom význame",
-                    b: "V aktívnom význame",
-                    c: "Vo význame atribútu objektu",
-                    d: "Vo význame vnútorného usporiadania objektu"
+                    a: "tržby > zisk > náklady > materiálové náklady > mzdové náklady > počet zamestnancov",
+                    b: "tržby > zisk > náklady > materiálové náklady > zásoby > počet zamestnancov",
+                    c: "tržby > zisk > náklady > výkonová spotreba > mzdové náklady > počet zamestnancov",
+                    d: "zisk > tržby > náklady > výkonová spotreba > mzdové náklady > počet zamestnancov",
+                    e: "zisk > náklady > materiálové náklady > mzdové náklady > počet zamestnancov",
+                    f: "zisk > tržby > náklady > materiálové náklady > zásoby > mzdové náklady > počet zamestnancov",
+                    g: "zisk > tržby > náklady > materiálové náklady > mzdové náklady > počet zamestnancov",
+                    h: "iný"
+                },
+                correctAnswers: ["g"]
+            },
+            {
+                text: "Finančný majetok podniku pri výpočte pohotovej likvidity predstavuje súčet položiek:",
+                options: {
+                    a: "finančné účty a krátkodobé časové rozlíšenie,",
+                    b: "finančný majetok a krátkodobé časové rozlíšenie,",
+                    c: "finančný majetok a finančné účty,",
+                    d: "finančný majetok, dlhodobé finančné účty a krátkodobé finančné účty,",
+                    e: "finančné účty, krátkodobý finančný majetok a dlhodobý finančný majetok,",
+                    f: "finančné účty a krátkodobý finančný majetok,",
+                    g: "dlhodobý finančný majetok a finančné účty."
+                },
+                correctAnswers: ["e"]
+            },
+            {
+                text: "Vyberte dvojice ukazovateľov medzi ktorými existuje priamo úmerný vzťah:",
+                options: {
+                    a: "pohotová likvidita a rentabilita vlastného kapitálu",
+                    b: "miera zadlženosti a miera finančnej samostatnosti",
+                    c: "celková zadlženosť a rentabilita vlastného kapitálu",
+                    d: "stupeň samofinancovania a rentabilita vlastného kapitálu",
+                    e: "stupeň prekapitalizovania a stabilita podniku",
+                    f: "stupeň podkapitalizovania a stabilita podniku"
+                },
+                correctAnswers: ["a","c"]
+            },
+            {
+                text: "Krátkodobé časové rozlíšenie v súvahe na strane pasív (kapitálu) pri úprave súvahy pripočítame:",
+                options: {
+                    a: "ku krátkodobému majetku",
+                    b: "ku obžnému majetku",
+                    c: "ku dlhodobému časovému rozlíšeniu na strane majetku",
+                    d: "ku krátkodobým cudzím zdrojom",
+                    e: "ku dlhodobým zdrojom krytia",
+                    f: "k majetku",
+                    g: "ku kapitálu"
+                },
+                correctAnswers: ["d"]
+            },
+            {
+                text: "Z nasledujúcich možností vyberte ukazovatele, ktoré reprezentujú ukazovatele charakterizujúce aktivitu podniku:",
+                options: {
+                    a: "rentabilita majetku",
+                    b: "obrat majetku",
+                    c: "stupeň samofinancovania",
+                    d: "rentabilita výnosov",
+                    e: "stupeň podkapitalizácie",
+                    f: "bežná likvidita",
+                    g: "celková likvidita",
+                    h: "obrat dlhodobého majetku"
+                },
+                correctAnswers: ["b","h"]
+            },
+            {
+                text: "NOPAT je:",
+                options: {
+                    a: "Výsledok hospodárenia z hospodárskej činnosti",
+                    b: "Výsledok hospodárenia pred zdanením",
+                    c: "Výsledok hospodárenia po zdanení",
+                    d: "Výsledok hospodárenia z hospodárskej činnosti pred zdanením a úročením",
+                    e: "Výsledok hospodárenia z hospodárskej činnosti pred zdanením",
+                    f: "Výsledok hospodárenia z hospodárskej činnosti pred úročením a po zdanení"
+                },
+                correctAnswers: ["c"]
+            },
+            {
+                text: "Uveďte spôsoby ako môže manažér podniku ovplyvniť hodnotu ČPK.",
+                type: "reveal",
+                answer: "Znížením nadmerných zásob.<br>Lepším riadením krátkodobých financií<br>Rýchlejším vymáhaním pohľadávok"
+            },
+            {
+                text: "Bankrotové modely sa skladajú zo súčtu niekoľkých ukazovateľov prenásobených váhami. Z uvedených ukazovateľov vyberte ukazovateľ, ktorý má v bankrotových modeloch zvyčajne najvyššiu váhu.",
+                options: {
+                    a: "rentabilita tržieb",
+                    b: "stupeň finančnej samostatnosti",
+                    c: "rentabilita majetku",
+                    d: "bežná likvidita",
+                    e: "rentabilita nákladov",
+                    f: "celková likvidita"
+                },
+                correctAnswers: ["c"]
+            },
+            {
+                text: "Z nasledujúcich možností vyberte skupinu ukazovateľov, do ktorej patrí ukazovateľ obrat majetku",
+                options: {
+                    a: "tokové",
+                    b: "podielové",
+                    c: "absolútne",
+                    d: "relatívne",
+                    e: "vzťahové",
+                    f: "účinnosti",
+                    g: "marginálne"
                 },
                 correctAnswers: ["a"]
             },
             {
-                text: "Interdisciplinárny charakter manažmentu je charakteristický pre:",
-                options: {
-                    a: "Tradičnú školu manažmentu",
-                    b: "Behaviorálnu teóriu manažmentu",
-                    c: "Modernou teóriou manažmentu",
-                    d: "Byrokratickú teóriu organizácie"
-                },
-                correctAnswers: ["c"]
+                text: "Bezpečnosť podniku predstavuje 40 %. Aká je výška čistého pracovného kapitálu, keď krátkodobý majetok podniku má hodnotu 100 000 €? Je tento podnik bezpečným podnikom?",
+                type: "reveal",
+                answer: "Čistý pracovný kapitál = 40 % z 100 000 € = 40 000 €. Áno, tento podnik je bezpečný lebo je hodnota väčšia ako 30%."
             },
             {
-                text: "Proces zabezpečujúci jednotné úsilie všetkých podsystémov organizácie pri plnení celkovej úlohy organizácie predstavuje:",
+                text: "Rentabilita vlastného kapitálu rastie, ak klesá niektorá z nasledujúcich položiek:",
                 options: {
-                    a: "Organizovanie ako proces",
-                    b: "Organizačnú diferenciáciu",
-                    c: "Organizačnú integráciu",
-                    d: "Organizačnou konfiguráciu"
-                },
-                correctAnswers: ["c"]
-            },
-            {
-                text: "Z hľadiska departmentizácie rozlišujeme nasledovné typy organizačných štruktúr:",
-                options: {
-                    a: "Vysoká vs. plochá organizačná štruktúra",
-                    b: "Úzka vs. široká organizačná štruktúra",
-                    c: "Líniová vs. funkčná organizačná štruktúra",
-                    d: "Funkcionálna vs. divizionálna organizačná štruktúra"
-                },
-                correctAnswers: ["d"]
-            },
-            {
-                text: "Vytvorenie objektovo špecializovaných, relatívne uzavretých organizačných celkov, ktoré zabezpečujú aj riadiacej činnosti, je typické pre model organizačnej štruktúry:",
-                options: {
-                    a: "Funkcionálny",
-                    b: "Funkčný",
-                    c: "Divizionálny",
-                    d: "Líniovo-štábny"
-                },
-                correctAnswers: ["c"]
-            },
-            {
-                text: "Diferenciácia odbornej funkcie riadenia, pomalší proces rozhodovania a podriadenosť viacerých nadriadeným sú znakmi pre organizačnú štruktúru:",
-                options: {
-                    a: "Vysokú",
-                    b: "Funkčnú ",
-                    c: "Líniovo-štábnu",
-                    d: "decentralizovanú"
+                    a: "celkový cudzí kapitál",
+                    b: "celkový kapitál",
+                    c: "celkový platený kapitál",
+                    d: "čistý zisk",
+                    e: "celkový vlastný kapitál",
+                    f: "hospodársky výsledok pred zúročením a zdanením",
+                    g: "dlhodobý majetok"
                 },
                 correctAnswers: ["b"]
             },
             {
-                text: "Model organizačnej štruktúry, ktorý zahŕňa líniové, štábne a projektové útvary, ktorým zodpovedajú samostatné štruktúry prepojené sieťou vertikálnych, horizontálnych a diagonálnych vzťahov je:",
+                text: "Bezpečnostnú maržu podnik dosiahne, ak:",
                 options: {
-                    a: "Líniovo-štábna OŠ",
-                    b: "Projektová koordinácia",
-                    c: "Bunková OŠ",
-                    d: "Maticová OŠ"
+                    a: "hodnota krátkodobého majetku je vyššia ako hodnota krátkodobých cudzích zdrojov",
+                    b: "hodnota krátkodobého majetku je nižšia ako hodnota krátkodobých cudzích zdrojov",
+                    c: "hodnota krátkodobých cudzích zdrojov je vyššia ako hodnota krátkodobého majetku",
+                    d: "hodnota krátkodobých cudzích zdrojov sa rovná hodnote krátkodobého majetku,",
+                    e: "dlhodobé zdroje sa rovnajú krátkodobému majetku,",
+                    f: "dlhodobé zdroje sa rovnajú dlhodobému majetku."
+                },
+                correctAnswers: ["e"]
+            },
+            {
+                text: "Z nasledujúcich možností vyberte skupinu ukazovateľov, do ktorej patrí ukazovateľ rentability kapitálu - ROA: Ktorý z ukazovateľov rentability hodnotí návratnosť vlastného kapitálu? (ROE)",
+                options: {
+                    a: "tokové",
+                    b: "senzitivity",
+                    c: "absolútne",
+                    d: "relatívne",
+                    e: "vzťahové",
+                    f: "efektívnosti",
+                    g: "marginálne"
                 },
                 correctAnswers: ["d"]
             },
             {
-                text: "Štruktúra, pri ktorej sa pri tvorbe útvarov nezohľadňuje výrobok (služba) ako celok ale len časť reťazca je:",
+                text: "V prípade, ak podnik nemá cudzie zdroje, tak vážený priemer nákladov na kapitál sa rovná:",
                 options: {
-                    a: "Bunková",
-                    b: "Procesná",
-                    c: "Sieťová",
-                    d: "Cieľovo-programová"
+                    a: "nákladom na cudzí kapitál",
+                    b: "úrokovej miere",
+                    c: "nákladom na zmiešaný kapitál",
+                    d: "nákladom na vlastný kapitál",
+                    e: "nákladom na celkový kapitál"
+                },
+                correctAnswers: ["d"]
+            },
+            {
+                text: "Vyberte dvojice ukazovateľov medzi ktorými existuje nepriamo úmerný vzťah:",
+                options: {
+                    a: "pohotová likvidita a rentabilita vlastného kapitálu",
+                    b: "miera zadlženosti a miera finančnej samostatnosti",
+                    c: "celková zadlženosť a rentabilita vlastného kapitálu",
+                    d: "stupeň samofinancovania a rentabilita vlastného kapitálu",
+                    e: "stupeň prekapitalizovania a stabilita podniku",
+                    f: "stupeň podkapitalizovania a stabilita podniku"
+                },
+                correctAnswers: ["a","b","f"]
+            },
+            {
+                text: "Z nasledujúcich možností vyberte ukazovatele, ktoré reprezentujú ukazovatele charakterizujúce štruktúru podniku:",
+                options: {
+                    a: "obrat krátkodobého majetku",
+                    b: "obrat majetku",
+                    c: "celková zadlženosť",
+                    d: "rentabilita výnosov",
+                    e: "úrokové krytie",
+                    f: "bežná likvidita",
+                    g: "celková likvidita",
+                    h: "obrat dlhodobého majetku"
+                },
+                correctAnswers: ["c","e","f","g"]
+            },
+            {
+                text: "Nekrytý dlh podnik dosiahne, ak:",  
+                options: {  
+                    a: "hodnota krátkodobého majetku je vyššia ako hodnota krátkodobých cudzích zdrojov",  
+                    b: "hodnota krátkodobého majetku je nižšia ako hodnota krátkodobých cudzích zdrojov",  
+                    c: "hodnota krátkodobých cudzích zdrojov je vyššia ako hodnota krátkodobého majetku",  
+                    d: "hodnota krátkodobých cudzích zdrojov sa rovná hodnote krátkodobého majetku",  
+                    e: "dlhodobé zdroje sa rovnajú krátkodobému majetku",  
+                    f: "dlhodobé zdroje sa rovnajú dlhodobému majetku"  
                 },
                 correctAnswers: ["b"]
             },
             {
-                text: "Medzi kritériá využívané v rámci modelu EFQM nepatrí:",
-                options: {
-                    a: "Vodcovstvo",
-                    b: "Ľudia",
-                    c: "Kvalita",
-                    d: "Procesy"
-                },
-                correctAnswers: ["c"]
+                text: "Vymenujte štádia v živote podniku, ktoré smerujú k jeho finančnému zlyhaniu.",
+                type: "reveal",
+                answer: "Inkubačná doba<br>Objavenie prvých finančných ťažkostí<br>Platobná neschopnosť<br>Celková nesolventnosť<br>Potvrdenie platobnej neschopnosti podniku"
             },
             {
-                text: "Orientácia na racionálnu prípravu a racionálne vykonávanie výrobných procesov na najnižších úrovniach organizácie je charakteristické pre:",
-                options: {
-                    a: "Vedecké riadenie Taylorizmus",
-                    b: "Procesný prístup",
-                    c: "Byrokratický prístup",
-                    d: "Rozhodovací prístup"
-                },
-                correctAnswers: ["a"]
+                text: "Vymedzte pojem finančné zdravie podniku. Zadefinujte najvýznamnejšie indikátory finančného zdravia podniku.",
+                type: "reveal",
+                answer: "Je to schopnosť plniť finančné záväzky, dosahovať zisk a zabezpečiť dlhodobú stabilitu.<br>Hodnotí sa pomocou:<br>Likvidita - schopnosť uhradiť krátkodobé záväzky<br>Rentabilita - ziskovosť voči tržbám<br>Zadlženosť - podiel cudzích zdrojov na financovaní<br>Aktivita - efektivita využívania zdrojov<br>Cash flow - schopnosť generovať hotovosť"
             },
             {
-                text: "Rozdelenie celkovej činnosti organizácie na jednotlivé útvary sa označuje ako:",
-                options: {
-                    a: "Organizačná diferenciácia",
-                    b: "Organizačná integrácia",
-                    c: "Organizačná decentralizácia",
-                    d: "Formalizácia organizačnej štruktúry"
-                },
-                correctAnswers: ["a"]
+                text: "Vymenujte perspektívy metódy BSC a uveďte ukazovateľ, ktorý reprezentuje danú perspektívu.",
+                type: "reveal",
+                answer: "Moderná metóda umožňujúca sledovať a vykazovať veľké množstvo údajov,<br>ktoré pochádzajú z rôznych oblastí riadenia podniku.<br><br>Finančná perspektíva - napr. rentabilita vlastného kapitálu (ROE).<br>Zákaznícka perspektíva - napr. spokojnosť zákazníkov.<br>Perspektíva učenia sa a rastu - napr. investície do školení zamestnancov.<br>Perspektíva interných procesov - napr. doba realizácie objednávok."
             },
             {
-                text: "Malý počet stupňov riadenia je charakteristický pre:",
-                options: {
-                    a: "Vysokú organizačnú štruktúru",
-                    b: "Plochú (širokú) organizačnú štruktúru",
-                    c: "Úzku organizačnú štruktúru",
-                    d: "Decentralizovanú organizačnú štruktúru"
-                },
-                correctAnswers: ["b"]
+                text: "Popíšte význam analýzy ex ante a uveďte základnú klasifikáciu modelov ex ante, ako aj príklady modelov, ktoré sa v rámci tejto analýzy aplikujú.",
+                type: "reveal",
+                answer: "Modely využívajúce údaje z minulosti na to, aby dokázali predikovať budúcnosť.<br>Bankrotové modely - vedia predpovedať 5 rokov dopredu, či dôjde k bankrotu firmy<br><br>Modely:<br>bodové (ratingové)<br>matematicko-štatistické (bankrotové) - (jednorozmerné/viacrozmerné)"
             },
             {
-                text: "Určenie maximálneho prístupného počtu podriadených jednému vedúcemu je typické pre:",
-                options: {
-                    a: "Analytický prístup k určeniu rozpätia riadenia",
-                    b: "Systémový prístup k určeniu rozpätia riadenia",
-                    c: "Empirický prístup k určeniu rozpätia riadenia",
-                    d: "Procesný prístup k určeniu rozpätia riadenia"
-                },
-                correctAnswers: ["c"]
+                text: "Aké interné zdroje informácií sa využívajú vo finančnej analýze.",
+                type: "reveal",
+                answer: "Podniková databáza<br>Údaje z účtovných závierok<br><br>Externé: vzťahy so zákazníkmi, dodávateľmi, opatrenia vlády"
             },
             {
-                text: "Model organizačnej štruktúry vychádzajúci hlavných činností, na základe ktorých sa tvoria jednotlivé útvary, je:",
-                options: {
-                    a: "Funkcionálny model",
-                    b: "Divizionálny model",
-                    c: "Funkčný model",
-                    d: "Líniový model"
-                },
-                correctAnswers: ["a"]
+                text: "Popíšte proces finančného plánovania.",
+                type: "reveal",
+                answer: "Analyzovať súčasný stav finančnej situácie podniku<br>Stanoviť finančné ciele<br>Určiť alternatívy na dosiahnutie cieľov<br>Vyhodnotiť dostupné alternatívy<br>Implementovať finančný plán<br>Previesť revíziu finančného plánu"
             },
             {
-                text: "Organizačná štruktúra, ktorej nevýhodami sú najmä preťaženie manažérov, nedostatok špecializácie, absencia odborníkov, špecialistov, sa označuje ako:",
-                options: {
-                    a: "Vysoká",
-                    b: "Funkcionálna",
-                    c: "Líniová",
-                    d: "Líniovo štábna"
-                },
-                correctAnswers: ["c"]
+                text: "Vymenujte metódy finančnej analýzy podnikov a ku každej metóde uveďte príklad metód ukazovateľa.",
+                type: "reveal",
+                answer: "Elementárne metódy:<br>Analýza absolútnych/pomerových/rozdielových/sústav ukazovateľov<br><br>Sofistikované metódy:<br>Matematicko-štatistické metódy<br>Neštatistické metódy"
             },
             {
-                text: "Medzi výhody (znaky) decentralizovaného modelu organizačnej štruktúry nepatrí:",
-                options: {
-                    a: "Odbremenenie vrcholového manažmentu od operatívnych úloh",
-                    b: "Úspora času",
-                    c: "Prenos zodpovednosti na nižšie úrovne riadenia",
-                    d: "Jednotnosť riadenia a kontroly zo strany jedného vedúceho"
-                },
-                correctAnswers: ["d"]
+                text: "Podnik dosahuje nízku výkonnosť, vymenujte dôvody dosahovania tejto nízkej výkonnosti.",
+                type: "reveal",
+                answer: "Podnik nevie vytvoriť výstup, aký by mal (zle riadi aktíva)<br>Podnik nevie dobre rozdeliť to, čo vytvoriť (zle riadi pasíva)<br>Podnik má problém s úhradou svojich záväzkov"
             },
             {
-                text: "Medzi cieľovo programové organizačné štruktúry nepatrí:",
-                options: {
-                    a: "Projektová organizácia",
-                    b: "Projektová koordinácia",
-                    c: "Virtuálna organizačná štruktúra",
-                    d: "Maticová organizačná štruktúra"
-                },
-                correctAnswers: ["c"]
-            },
-            {
-                text: "Za najdôležitejší druh organizačných noriem sa považujú:",
-                options: {
-                    a: "Štatúty, stanovy",
-                    b: "Organizačné poriadky",
-                    c: "Smernice",
-                    d: "Postupy"
-                },
-                correctAnswers: ["a"]
-            },
-            {
-                text: "Pre ktorú školu manažmentu je charakteristický prístup, ktorý viedol k definovaniu hlavných manažérskych funkcií čiarkach ktoré tvoria obsah manažmentu:",
-                options: {
-                    a: "Taylorizmus",
-                    b: "Procesný prístup (H. Fayol)",
-                    c: "Byrokratický prístup",
-                    d: "Behaviorálny prístup"
-                },
-                correctAnswers: ["b"]
-            },
-            {
-                text: "Medzi formy pretvárania už existujúcej organizácie patrí:",
-                options: {
-                    a: "Identifikácia činností nevyhnutných pre realizáciu plánov organizácie - diferenciácia úloh",
-                    b: "Definovanie kritérií pre zlúčenie príbuzných činností do príslušných útvarov - integrácia úloh",
-                    c: "Určenie postavenia, zodpovednosti a kompetencie riadiacich orgánov",
-                    d: "Znižovanie počtu výkonných alebo administratívno-správnych útvarov"
-                },
-                correctAnswers: ["d"]
-            },
-            {
-                text: "Vertikálna diferenciácia je:",
-                options: {
-                    a: "Deľba práce, na základe ktorej sa vytvára hierarchia organizačnej štruktúry",
-                    b: "Deľba práce, na základe ktorej sa stanovuje rozpätie riadenia",
-                    c: "Deľba práce, na základe ktorej sa stanovuje počet podriadených pracovníkov jednému vedúcemu",
-                    d: "Proces zabezpečujúci jednotné úsilie všetkých podsystémov organizácie pri plnení celkovej úlohy"
-                },
-                correctAnswers: ["a"]
-            },
-            {
-                text: "Relatívne veľký počet stupňov riadenia a malý počet útvarov (pracovísk) a pracovníkov podriadených vedúcim na jednotlivých stupňoch riadenia je znakom organizačnej štruktúry:",
-                options: {
-                    a: "Plochej",
-                    b: "Divizionálnej",
-                    c: "Vysokej",
-                    d: "Funkcionálnej"
-                },
-                correctAnswers: ["c"]
-            },
-            {
-                text: "Charakteristikou funkčnej organizačnej štruktúry je:",
-                options: {
-                    a: "Každý podriadený má len jedného nadriadeného",
-                    b: "Centralizácia",
-                    c: "Preťažená z vrcholového manažmentu",
-                    d: "Každý podriadený má niekoľko nadriadených"
-                },
-                correctAnswers: ["d"]
-            },
-            {
-                text: "Adaptabilno-organizačný typ je charakteristicky:",
-                options: {
-                    a: "Vysokou mierou formalizácie",
-                    b: "Jednoznačne určenou hierarchiou právomocí",
-                    c: "Nízkou mierou formalizácie",
-                    d: "Využívaním najmä v štátnych inštitúciách"
-                },
-                correctAnswers: ["c"]
-            },
-            {
-                text: "Medzi cieľovo-programové organizačné štruktúry nepatrí:",
-                options: {
-                    a: "Projektová koordinácia",
-                    b: "Sieťová organizácia",
-                    c: "Projektová organizačná štruktúra",
-                    d: "Maticová OŠ"
-                },
-                correctAnswers: ["b"]
-            },
-            {
-                text: "Špecifický typ organizačnej štruktúry, pri ktorom dochádza k prepojeniu veľkého a malého podniku za účelom získania vzájomnej prospešných výhod sa nazýva ako:",
-                options: {
-                    a: "Bunková",
-                    b: "Procesná",
-                    c: "Sieťová",
-                    d: "Cieľovo-programová"
-                },
-                correctAnswers: ["a"]
-            },
-            {
-                text: "Príkazy ako typ organizačného dokumentu sú charakteristické nasledovným:",
-                options: {
-                    a: "Predstavujú základný interný riadiaci akt",
-                    b: "Udeľujú sa z úrovne najvyššieho pracovníka organizácia a vzťahujú sa na všetkých jej zamestnancov",
-                    c: "Predstavujú pokyny z úrovne riadiacich pracovníkov adresované svojim priamym podriadeným",
-                    d: "Majú dlhodobú platnosť"
-                },
-                correctAnswers: ["b"]
-            },
-            {
-                text: "Otázka formálnej a neformálnej organizácie je typická pre:",
-                options: {
-                    a: "Tradičnú (klasickú) školu",
-                    b: "Behaviorálnu (neoklasickú) školu",
-                    c: "Modernú školu",
-                    d: "Pragmatický prístup"
-                },
-                correctAnswers: ["b"]
-            },
-            {
-                text: "Proces zabezpečujúci jednotné úsilie všetkých podsystémov organizácie pri plnení jej celkovej úlohy je:",
-                options: {
-                    a: "Organizačná diferenciácia",
-                    b: "Vertikálna diferenciácia",
-                    c: "Horizontálna diferenciácia",
-                    d: "Organizačná integrácia"
-                },
-                correctAnswers: ["d"]
-            },
-            {
-                text: "Počet pracovníkov (organizačných jednotiek) priradených 1 vedúcemu predstavuje",
-                options: {
-                    a: "Základný stupeň organizačnej štruktúry",
-                    b: "Medzistupeň organizačnej štruktúry",
-                    c: "Rozpätie riadenia",
-                    d: "Konfiguráciu organizačnej štruktúry"
-                },
-                correctAnswers: ["c"]
-            },
-            {
-                text: "Rozdelenia organizácie na útvary, v ktorých sa zoskupujú rovnaké alebo príbuzné funkcie (činnosti) je znakom:",
-                options: {
-                    a: "Širokej OŠ",
-                    b: "Funkcionálnej OŠ",
-                    c: "Divizionálnej OŠ",
-                    d: "Líniovo-štábnej OŠ"
-                },
-                correctAnswers: ["b"]
-            },
-            {
-                text: "Charakteristikou funkčnej organizačnej štruktúry je:",
-                options: {
-                    a: "Každý podriadený má len jedného manažéra",
-                    b: "Centralizácia",
-                    c: "Preťaženosť vrcholového manažmentu",
-                    d: "Každý podriadený má niekoľko manažérov"
-                },
-                correctAnswers: ["d"]
-            },
-            {
-                text: "Nevýhodou funkcionálnej organizačnej štruktúry je:",
-                options: {
-                    a: "Vyššie nároky na líniových vedúcich (manažérov) organizačných jednotiek",
-                    b: "Riziko vzniku duplicít pri riadiacich činnostiach organizačných jednotiek",
-                    c: "Chýbajúci vedúci s komplexnými riadiacimi schopnosťami",
-                    d: "Vyššie náklady na riadiaci aparát"
-                },
-                correctAnswers: ["c"]
-            },
-            {
-                text: "Dôraz na lokálne trhy a lepšia komunikácia s lokálnymi zamestnancami sú znakmi:",
-                options: {
-                    a: "Líniovo-štábnej OŠ",
-                    b: "Maticovej OŠ",
-                    c: "Produktovej divizionálnej OŠ",
-                    d: "Teritoriálnej (územnej) divizionálnej OŠ"
-                },
-                correctAnswers: ["d"]
-            },
-            {
-                text: "Špecializácia a odbornosť v riadení, využívanie odborníkov ako poradný orgán, odbremenenie líniových vedúcich a jednota riadenia organizácie a organizačných jednotiek sú znakmi:",
-                options: {
-                    a: "Funkcionálnej OŠ",
-                    b: "Funkčnej OŠ",
-                    c: "Líniovej OŠ",
-                    d: "Líniovo štábnej OŠ"
-                },
-                correctAnswers: ["d"]
-            },
-            {
-                text: "Nestála, voľne viazaná organizačná sieťová štruktúra založenú na samostatnosti jednotiek, na aktivitách a podnikateľskej pružnosti zamestnancov, pre ktorú je typický vznik a zánik nových útvarov, sa označuje ako:",
-                options: {
-                    a: "Sieťová",
-                    b: "Satelitná",
-                    c: "Virtuálna",
-                    d: "AMÉBA"
-                },
-                correctAnswers: ["d"]
+                text: "Popíšte rozdiel medzi kontrolou finančného plánu a kontrolou kvality vo finančnom plánovaní.",
+                type: "reveal",
+                answer: "Kontrola fin. plánu:<br>Zameriava sa na dodržiavanie finančných cieľov<br>a či je plnenie plánu v súlade s realitou<br><br>Kontrola kvality vo fin. pláne:<br>Zameriava sa na presnosť, konzistentnosť<br>a dôveryhodnosť samotného plánu."
             }
         ];
 
         const correctSound = new Audio("correct.mp3");
         const incorrectSound = new Audio("incorrect.mp3");
+        const revealSound = new Audio("reveal.wav");
 
         function shuffleArray(array) {
             return array.sort(() => Math.random() - 0.5);
@@ -483,13 +369,36 @@
         }
 
         function loadQuestion() {
-            verifyButton.disabled = true; // Disable button initially
+            verifyButton.disabled = true; // Disable button
             const question = shuffledQuestions[currentQuestionIndex];
             questionElement.textContent = question.text;
             updateCounter();
 
             optionsElement.innerHTML = "";
             selectedAnswers.clear();
+
+            if (question.type === "reveal") {
+                const revealButton = document.createElement("button");
+                revealButton.textContent = "Zobraziť odpoveď";
+                revealButton.classList.add("verify");
+                revealButton.addEventListener("click", () => {
+                    revealSound.play();
+                    const answerDiv = document.createElement("div");
+                    answerDiv.innerHTML = question.answer;
+                    //answerDiv.style.marginTop = "20px";
+                    answerDiv.style.fontSize = "1.2em";
+                    optionsElement.innerHTML = "";
+                    optionsElement.appendChild(answerDiv);
+                    revealButton.disabled = true;
+                    verifyButton.disabled = false;
+                    verifyButton.textContent = "Ďalej";
+                });
+                optionsElement.appendChild(revealButton);
+                verifyButton.textContent = "Ďalej";
+                return;
+            }
+            
+            verifyButton.textContent = "Overiť";
 
             Object.entries(question.options).forEach(([key, value]) => {
                 const optionDiv = document.createElement("div");
@@ -536,6 +445,12 @@
             verifyButton.disabled = true; // Disable button after clicking
 
             const question = shuffledQuestions[currentQuestionIndex];
+            if (question.type === "reveal") {
+                goToNextQuestion();
+                //verifyButton.textContent = "Overiť";
+                return;
+            }
+
             const buttons = optionsElement.querySelectorAll("button");
             const isCorrect = Array.from(selectedAnswers).every(answer => question.correctAnswers.includes(answer)) && selectedAnswers.size === question.correctAnswers.length;
 
